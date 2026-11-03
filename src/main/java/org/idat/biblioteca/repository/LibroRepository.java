@@ -8,10 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface LibroRepository extends JpaRepository<Libro,Long> {
-
-   List<Libro> findByTituloContaining(String titulo);
-   Optional<Libro> findByIsbn(String isbn);
-   List<Libro> findByCategoriaContaining(String categoria);
-   List<Libro> findByStockGreaterThan(int stock);
+public interface LibroRepository extends JpaRepository<Libro, Integer> {
+    List<Libro> findByTituloContaining(String titulo);
+    Optional<Libro> findByIsbn(String isbn);
+    List<Libro> findByIdCategoria(Integer idCategoria);
+    List<Libro> findByStockGreaterThan(int stock);
 }

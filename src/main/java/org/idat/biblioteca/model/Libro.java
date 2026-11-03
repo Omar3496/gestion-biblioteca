@@ -4,33 +4,32 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
+@Table(name = "libros")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "libros")
 public class Libro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_libro")
+    private Integer id;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "titulo", nullable = false, length = 200)
     private String titulo;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "autor", nullable = false, length = 150)
     private String autor;
 
-    @Column(nullable = false, unique = true, length = 20)
+    @Column(name = "isbn", nullable = false, unique = true, length = 20)
     private String isbn;
 
-    @Column(length = 50)
-    private String categoria;
+    @Column(name = "id_categoria", nullable = false)
+    private Integer idCategoria;
 
-    @Column(length = 100)
-    private String editorial;
-
-    @Column(nullable = false)
+    // Conservamos el nombre Java 'stock' por compatibilidad con el API original.
+    @Column(name = "ejemplares_disponibles", nullable = false)
     private Integer stock;
 }
